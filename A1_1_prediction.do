@@ -80,11 +80,11 @@ local coef _b["logrent"]
 local se _se["logrent"]
 local r2 `e(r2_within)'
 
-binscatter2 logdaramad logrent if inrange(year,89,93) [aw=weight], absorb(year) n(50) ///
+binscatter2 logdaramad logrent if inrange(year,89,93) [aw=weight], absorb(year) n(100) scheme(s2color) ///
 	graphregion(color(white)) name("rent1",replace)  lcolor(navy) altcontrols ///
 	xtitle("house value (in log)") ytitle("household income (in log)") ///
 	text(19.8 18.4 "slope= `: display %5.3f `coef'' (SE= `: display %5.3f `se'')", placement(l)) ///
-	text(19.5 18.4 "R2= `: display %5.2f `r2''", placement(l)) ylabel(19.5(0.5)21.5)
+	text(19.5 18.4 "R2= `: display %5.2f `r2''", placement(l)) ylabel(19.5(0.5)21.5) 
 graph export "./Figures/Python/A1_1_prediction_top_rent_first_period.pdf", replace
 
 * ------------------------------------------------------
@@ -93,7 +93,7 @@ local coef _b["logrent"]
 local se _se["logrent"]
 local r2 `e(r2_within)'
 
-binscatter2 logdaramad logrent if inrange(year,94,98) [aw=weight], absorb(year) n(50) ///
+binscatter2 logdaramad logrent if inrange(year,94,98) [aw=weight], absorb(year) n(100) scheme(s2color) ///
 	graphregion(color(white)) name("ren2",replace) lcolor(navy) altcontrols ///
 	xtitle("house value (in log)") ytitle("household income (in log)") ///
 	text(19.9 18.5 "slope= `: display %5.3f `coef'' (SE= `: display %5.3f `se'')", placement(l)) ///
@@ -113,7 +113,7 @@ reghdfe resid_1_sq logrent if inrange(year,89,93) , absorb(year) vce(robust)
 local coef _b["logrent"]
 local se _se["logrent"]
 
-binscatter2 resid_1_sq logrent if inrange(year,89,93) [aw=weight], n(500) ///
+binscatter2 resid_1_sq logrent if inrange(year,89,93) [aw=weight], n(500) scheme(s2color)  ///
 	graphregion(color(white)) name("rent1",replace)  lcolor(navy)  ///
 	xtitle("house value (in log)") ytitle("household income (in log)") ///
 	text(0.35 18.4 "slope= `: display %5.3f `coef'' (SE= `: display %5.3f `se'')", placement(l)) yscale(range(0 1.3)) ylabel(0(0.3)1.2)
@@ -132,7 +132,7 @@ reghdfe resid_2_sq logrent if inrange(year,94,98) , absorb(year) vce(robust)
 local coef _b["logrent"]
 local se _se["logrent"]
 
-binscatter2 resid_2_sq logrent if inrange(year,94,98) [aw=weight], n(500) ///
+binscatter2 resid_2_sq logrent if inrange(year,94,98) [aw=weight], n(500) scheme(s2color) ///
 	graphregion(color(white)) name("ren2",replace) lcolor(navy)  ///
 	xtitle("house value (in log)") ytitle("household income (in log)") ///
 	text(0.35 18.5 "slope= `: display %5.3f `coef'' (SE= `: display %5.3f `se'')", placement(l)) yscale(range(0 1.3)) ylabel(0(0.3)1.2)
